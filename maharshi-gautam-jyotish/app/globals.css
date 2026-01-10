@@ -1,0 +1,121 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Spiritual decorative border */
+  .border-spiritual {
+    border-image: linear-gradient(135deg, #f97316, #facc15, #f97316) 1;
+  }
+
+  /* Glowing text effect */
+  .text-glow {
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.5),
+                 0 0 20px rgba(250, 204, 21, 0.3);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-2 shadow-2xl;
+  }
+
+  /* Mandala decoration */
+  .mandala-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23f9731620' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23facc1520' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='20' fill='none' stroke='%23f9731620' stroke-width='0.5'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* Spiritual section divider */
+  .divider-spiritual {
+    @apply relative;
+  }
+
+  .divider-spiritual::after {
+    content: '☸';
+    @apply absolute left-1/2 -translate-x-1/2 text-2xl text-saffron-500;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Om symbol pseudo element */
+  .om-symbol::before {
+    content: 'ॐ';
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(249, 115, 22, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Dark mode transitions */
+.dark {
+  color-scheme: dark;
+}
+
+/* Focus visible styles for accessibility */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-saffron-500;
+}
+
+/* Selection colors */
+::selection {
+  @apply bg-saffron-500/30 text-navy-800;
+}
+
+.dark ::selection {
+  @apply bg-gold-400/30 text-white;
+}
